@@ -3,4 +3,7 @@
     <string name="login_preview">Логин</string>
     <string name="password_preview">Пароль</string>
     <string name="button_text">ВОЙТИ</string>
+    <string name="label_text_login">Логин</string>
+    <string name="label_text_password">Пароль</string>
+
 </resources>

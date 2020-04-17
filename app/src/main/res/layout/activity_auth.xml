@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#23213F">
+
+    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+        android:id="@+id/textfieldLogin"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="56dp"
+        app:labelText="@string/label_text_login"
+        app:secondaryColor="#8AFFFFFF"
+
+        >
+
+        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+            android:id="@+id/textfieldLogin_edit"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:inputType="text"
+            android:textColor="#8AFFFFFF"
+
+            />
+    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+        android:id="@+id/textfieldPassword"
+        android:layout_below="@id/textfieldLogin"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        app:labelText="@string/label_text_password"
+        app:secondaryColor="#8AFFFFFF"
+
+        >
+
+        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+            android:id="@+id/editPassword_edit"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:inputType="text"
+            android:textColor="#8AFFFFFF"
+
+            />
+    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+    <TextView
+        android:id="@+id/tv_tokenview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textfieldPassword"
+
+        android:textColor="#FFFFFF"
+        android:background="#4F4F4F"
+        />
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+        <Button
+            android:id="@+id/b_buttonlogin"
+            android:onClick="progressBarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="12dp"
+            android:background="#00F8DA"
+            android:text="@string/button_text"
+             />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Large"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="12dp"
+            android:visibility="invisible" />
+    </FrameLayout>
+
+
+
+</RelativeLayout>
+

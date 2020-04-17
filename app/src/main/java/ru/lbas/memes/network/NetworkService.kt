@@ -1,4 +1,4 @@
-package network
+package ru.lbas.memes.network
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

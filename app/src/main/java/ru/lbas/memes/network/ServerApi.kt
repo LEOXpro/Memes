@@ -1,7 +1,7 @@
-package network
+package ru.lbas.memes.network
 
-import network.model.LoginRequest
-import network.model.LoginResponse
+import ru.lbas.memes.network.model.LoginRequest
+import ru.lbas.memes.network.model.LoginResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST

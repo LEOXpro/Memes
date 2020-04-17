@@ -1,4 +1,4 @@
-package network.model
+package ru.lbas.memes.network.model
 
 import com.google.gson.annotations.SerializedName
 
