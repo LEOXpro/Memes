@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.text.method.PasswordTransformationMethod
+import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -20,13 +21,14 @@ import studio.carbonylgroup.textfieldboxes.TextFieldBoxes
 class AuthActivity : AppCompatActivity() {
     private lateinit var authBtn: Button
     private lateinit var tokenView: TextView
+    private lateinit var errorResp: TextView
     private lateinit var progressBar: ProgressBar
     private lateinit var passTextFieldBoxes: TextFieldBoxes
     private lateinit var textFieldBoxes: TextFieldBoxes
     private lateinit var editPassword_edit: ExtendedEditText
     private lateinit var textfieldLogin_edit: ExtendedEditText
     companion object{
-       private var count: Int = 1
+       private var count: Int = 1  // счетчик для метода скрытия/показа пароля
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,8 +39,7 @@ class AuthActivity : AppCompatActivity() {
         editPassword_edit = findViewById(R.id.editPassword_edit)
         textfieldLogin_edit = findViewById(R.id.textfieldLogin_edit)
         textFieldBoxes = findViewById(R.id.textfieldLogin)
-        authBtn.setOnClickListener {
-
+        authBtn.setOnClickListener {  // метод проверки на пустые поля
 
             if (textfieldLogin_edit.length() == 0 && editPassword_edit.length() != 0) {
              textFieldBoxes.setError("Поле не может быть пустым", false)
@@ -60,16 +61,14 @@ class AuthActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            authorization()
-            Handler().postDelayed({ progressBarNo() }, 300)
+            authorization()    // метод авторизации на сервере
+            Handler().postDelayed({ progressBarNo() }, 300)  // скрытие прогресс бара
             }
-        tokenView = findViewById(R.id.tv_tokenview)
+        // tokenView = findViewById(R.id.tv_tokenview)
         passTextFieldBoxes = findViewById(R.id.textfieldPassword)
-        // passTextFieldBoxes.setHelperText("serwe")
-        // passTextFieldBoxes.isShown()
+        // метод установки текста для HelperText -> passTextFieldBoxes.setHelperText("set helper text")
 
-        passTextFieldBoxes.endIconImageButton.setOnClickListener{
-
+        passTextFieldBoxes.endIconImageButton.setOnClickListener{  // метод скрытия/показа пароля
             if (count == 1) {
                 passTextFieldBoxes.setEndIcon(R.drawable.baseline_visibility_white_24dp)
                 editPassword_edit.setTransformationMethod(null)
@@ -85,14 +84,16 @@ class AuthActivity : AppCompatActivity() {
         }
     }
 
-    fun progressBarView(){
+    fun progressBarView(){       // метод отображения вьюшки прогресс бара
         progressBar.setVisibility(ProgressBar.VISIBLE)
+        authBtn.setText(" ")
     }
-    fun progressBarNo(){
+    fun progressBarNo(){        // метод скрытия вьюшки прогресс бара
         progressBar.setVisibility(ProgressBar.INVISIBLE)
+        authBtn.setText(getString(R.string.button_text))
     }
 
-    private fun authorization() {
+    private fun authorization() {          // метод авторизации на сервере
         val retroServise = NetworkService.createInstance().create(ServerApi::class.java)
         progressBarView()
         retroServise.autorization(LoginRequest("login", "password"))
@@ -103,7 +104,13 @@ class AuthActivity : AppCompatActivity() {
                     call: Call<LoginResponse>,
                     response: Response<LoginResponse>
                 ) {
-                    tokenView.text = response.body()?.accessToken
+                  // 1) получение токена(пока не нужно) ->
+                  //        tokenView.text = response.body()?.accessToken
+                  // 2) если токен не получен, то выводим ошибку авторизации делаем @+id/tv_error_login видимым
+                  //        errorResp = findViewById(R.id.tv_error_login)
+                  //        errorResp.setVisibility(View.VISIBLE)
+                  // 3) если токен получен, то делаем запрос на сервер...
+
                 }
             })
     }
