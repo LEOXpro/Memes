@@ -93,7 +93,7 @@ class AuthActivity : AppCompatActivity() {
         authBtn.setText(getString(R.string.button_text))
     }
 
-    private fun authorization() {          // метод авторизации на сервере
+    private fun authorization() {      // метод авторизации на сервере
         val retroServise = NetworkService.createInstance().create(ServerApi::class.java)
         progressBarView()
         retroServise.autorization(LoginRequest("login", "password"))

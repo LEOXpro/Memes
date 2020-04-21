@@ -24,7 +24,6 @@
         android:layout_marginTop="56dp"
         app:labelText="@string/label_text_login"
         app:helperText=" "
-        app:hasFocus="false"
         app:helperTextColor="#8AFFFFFF"
         app:secondaryColor="#8AFFFFFF"
         >
@@ -62,7 +61,6 @@
             android:textColor="#8AFFFFFF"
             />
     </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-
 
     <FrameLayout
         android:layout_width="match_parent"
