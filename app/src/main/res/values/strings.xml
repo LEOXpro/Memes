@@ -6,5 +6,5 @@
     <string name="login_preview">Логин</string>
     <string name="password_preview">Пароль</string>
     <string name="button_text">войти</string>
-    <string name="error_auth_text">"     Вы ввели не верные данные.\n     Попробуйте еще раз"</string>
+    <string name="error_auth_text">"     Вы ввели не верные данные.\n     Попробуйте еще раз"</string>q
 </resources>
