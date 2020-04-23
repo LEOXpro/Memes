@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#23213F">
+  <!--  временная вьюшка для просмотра получения токена
+   <TextView
+        android:id="@+id/tv_tokenview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:background="#4F4F4F"
+        />
+        -->
+    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+        android:id="@+id/textfieldLogin"
+        android:layout_width="match_parent"
+        android:layout_height="79dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="56dp"
+        app:labelText="@string/label_text_login"
+        app:helperText=" "
+        app:helperTextColor="#8AFFFFFF"
+        app:secondaryColor="#8AFFFFFF"
+        >
+
+        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+            android:id="@+id/textfieldLogin_edit"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:inputType="number"
+            android:textColor="#8AFFFFFF"
+            />
+    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+        android:id="@+id/textfieldPassword"
+        android:layout_below="@id/textfieldLogin"
+        android:layout_width="match_parent"
+        android:layout_height="79dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        app:labelText="@string/label_text_password"
+        app:helperText="@string/helper_text"
+        app:helperTextColor="#8AFFFFFF"
+        app:secondaryColor="#8AFFFFFF"
+        app:maxCharacters="6"
+        app:mCounterTextColor="#23213F"
+        app:endIcon="@drawable/baseline_invisibility_white_24dp"
+        >
+        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+            android:id="@+id/editPassword_edit"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:inputType="numberPassword"
+            android:textColor="#8AFFFFFF"
+            />
+    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <Button
+            android:id="@+id/b_buttonlogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/ripple_effect"
+            android:text="@string/button_text"
+             />
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:theme="@style/CircularProgress"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="12dp"
+            android:visibility="invisible"
+            android:elevation="8dp"
+            android:startColor="#000000"
+            />
+        <TextView
+            android:id="@+id/tv_error_login"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:visibility="invisible"
+            android:text="@string/error_auth_text"
+            android:layout_gravity="bottom|center"
+            android:textColor="#8AFFFFFF"
+            android:gravity="center|left"
+            android:background="#FF575D"
+            android:elevation="6dp"
+            />
+    </FrameLayout>
+</RelativeLayout>
+

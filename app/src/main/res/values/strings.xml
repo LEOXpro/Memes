@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Memes</string>
+    <string name="label_text_login">Логин</string>
+    <string name="label_text_password">Пароль</string>
+    <string name="helper_text">"Пароль должен содержать 6 символов"</string>
+    <string name="login_preview">Логин</string>
+    <string name="password_preview">Пароль</string>
+    <string name="button_text">войти</string>
+    <string name="error_auth_text">"     Вы ввели не верные данные.\n     Попробуйте еще раз"</string>
 </resources>
