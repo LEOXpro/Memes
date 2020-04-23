@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.text.method.PasswordTransformationMethod
-import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -85,13 +84,13 @@ class AuthActivity : AppCompatActivity() {
                 passTextFieldBoxes.setEndIcon(R.drawable.baseline_visibility_white_24dp)
                 editPassword_edit.setTransformationMethod(null)
                 editPassword_edit.setSelection(editPassword_edit.length())
-                isPasswordMasked == false
+                isPasswordMasked = false
             }
             else {
                 passTextFieldBoxes.setEndIcon(R.drawable.baseline_invisibility_white_24dp)
                 editPassword_edit.setTransformationMethod(PasswordTransformationMethod())
                 editPassword_edit.setSelection(editPassword_edit.length())
-                isPasswordMasked == true
+                isPasswordMasked = true
             }
         }
     }
