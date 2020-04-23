@@ -27,8 +27,9 @@ class AuthActivity : AppCompatActivity() {
     private lateinit var textFieldBoxes: TextFieldBoxes
     private lateinit var editPassword_edit: ExtendedEditText
     private lateinit var textfieldLogin_edit: ExtendedEditText
+
     companion object{
-       private var count: Int = 1  // счетчик для метода скрытия/показа пароля
+        private  var isPasswordMasked: Boolean = true
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,8 +40,11 @@ class AuthActivity : AppCompatActivity() {
         editPassword_edit = findViewById(R.id.editPassword_edit)
         textfieldLogin_edit = findViewById(R.id.textfieldLogin_edit)
         textFieldBoxes = findViewById(R.id.textfieldLogin)
-        authBtn.setOnClickListener {  // метод проверки на пустые поля
 
+        authBtn.setOnClickListener {
+            /**
+             * проверка на пустые поля
+             */
             if (textfieldLogin_edit.length() == 0 && editPassword_edit.length() != 0) {
              textFieldBoxes.setError("Поле не может быть пустым", false)
          }
@@ -60,42 +64,58 @@ class AuthActivity : AppCompatActivity() {
                 passTextFieldBoxes.setError("Поле не может быть пустым", false)
                 return@setOnClickListener
             }
-
-            authorization()    // метод авторизации на сервере
-            Handler().postDelayed({ progressBarNo() }, 300)  // скрытие прогресс бара
+            /**
+             * авторизация
+             */
+            authorization()
+            /**
+             * скрытие прогресс бара
+             */
+            Handler().postDelayed({ hideProgressBar() }, 300)
             }
         // tokenView = findViewById(R.id.tv_tokenview)
         passTextFieldBoxes = findViewById(R.id.textfieldPassword)
         // метод установки текста для HelperText -> passTextFieldBoxes.setHelperText("set helper text")
 
-        passTextFieldBoxes.endIconImageButton.setOnClickListener{  // метод скрытия/показа пароля
-            if (count == 1) {
+        /**
+         * метод скрытия/показа пароля
+         */
+        passTextFieldBoxes.endIconImageButton.setOnClickListener{
+            if (isPasswordMasked == true) {
                 passTextFieldBoxes.setEndIcon(R.drawable.baseline_visibility_white_24dp)
                 editPassword_edit.setTransformationMethod(null)
                 editPassword_edit.setSelection(editPassword_edit.length())
-                count--
+                isPasswordMasked == false
             }
             else {
                 passTextFieldBoxes.setEndIcon(R.drawable.baseline_invisibility_white_24dp)
                 editPassword_edit.setTransformationMethod(PasswordTransformationMethod())
                 editPassword_edit.setSelection(editPassword_edit.length())
-                count++
+                isPasswordMasked == true
             }
         }
     }
 
-    fun progressBarView(){       // метод отображения вьюшки прогресс бара
+    /**
+     * метод отображения вьюшки прогресс бара
+     */
+    fun showProgressBar(){
         progressBar.setVisibility(ProgressBar.VISIBLE)
         authBtn.setText(" ")
     }
-    fun progressBarNo(){        // метод скрытия вьюшки прогресс бара
+    /**
+     * метод скрытия вьюшки прогресс бара
+     */
+    fun hideProgressBar(){
         progressBar.setVisibility(ProgressBar.INVISIBLE)
         authBtn.setText(getString(R.string.button_text))
     }
-
-    private fun authorization() {      // метод авторизации на сервере
+    /**
+     * метод авторизации на сервере
+     */
+    private fun authorization() {
         val retroServise = NetworkService.createInstance().create(ServerApi::class.java)
-        progressBarView()
+        showProgressBar()
         retroServise.autorization(LoginRequest("login", "password"))
             .enqueue(object : Callback<LoginResponse> {
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
